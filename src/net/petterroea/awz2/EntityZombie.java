@@ -35,7 +35,7 @@ public class EntityZombie extends Entity {
 		removeMe = true;
 		map.zombies = map.zombies - 1;
 		Random rand = new Random();
-		for(int i = 0; i < 50; i++)
+		for(int i = 0; i < 10; i++)
 		{
 			int xpos = rand.nextInt(32) + (int)x;
 			int ypos = rand.nextInt(32) + (int)y;
