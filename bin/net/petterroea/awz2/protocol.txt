@@ -1,0 +1,14 @@
+BLOOD: id, x, y, xspeed, yspeed, lifetime
+BULLET: id, x, y, angle, damage, special
+PLAYER: id, x, y, lookangle, name, xspeed, yspeed
+ZOMBIE: id, x, y, health
+FIRE: name, angle, weapon
+HANDSHAKE: name
+HANDSHAKEBACK: id, Mapname
+TIME: gamestart
+MOVEMENT: name, xspeed, yspeed, x, y
+DEADZOMBIE: id, nameofkiller
+ZOMBIETARGET: player/pos 
+TARGET: playername, zombieid
+HEAL: x, y, newval
+DAMAGE: x, y, newval
