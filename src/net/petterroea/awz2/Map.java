@@ -252,9 +252,9 @@ public class Map {
 	public void draw(Graphics g)
 	{
 		//Modify this if you want to use a different drawing method
-		for(int x = (-xoff/tilew); x < (-xoff/tilew)+(Game.WIDTH/tilew); x++)
+		for(int x = Math.max(-xoff/tilew, 0); x < (-xoff/tilew)+(Game.WIDTH/tilew); x++)
 		{
-			for(int y = (-yoff/tileh); y < (-yoff/tileh)+(Game.HEIGHT/tileh); y++)
+			for(int y = Math.max(-yoff/tileh, 0); y < (-yoff/tileh)+(Game.HEIGHT/tileh); y++)
 			{
 				if(tiles[x][y] != null && tiles[x][y].isVisible(xoff, yoff, tilew, tileh))
 				{

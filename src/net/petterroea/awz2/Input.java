@@ -112,7 +112,7 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener, M
 		{
 			return MouseBtn.RIGHT;
 		}
-		return MouseBtn.NONE; //Hvis det ikke er en av de knappene over, så er det ikke en knapp(Eler en fancy knapp). Se http://docs.oracle.com/javase/7/docs/api/java/awt/event/MouseEvent.html#getButton%28%29
+		return MouseBtn.NONE; //Hvis det ikke er en av de knappene over, sï¿½ er det ikke en knapp(Eler en fancy knapp). Se http://docs.oracle.com/javase/7/docs/api/java/awt/event/MouseEvent.html#getButton%28%29
 	}
 	@Override
 	/**
@@ -128,8 +128,8 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener, M
 	 */
 	public void mouseDragged(MouseEvent arg0) {
 		game.screen.mouseDragged(arg0);
-		mousex = arg0.getX();
-		mousey = arg0.getY();
+		mousex = (int)(arg0.getX()/Game.SCALE);
+		mousey = (int)(arg0.getY()/Game.SCALE);
 	}
 
 	@Override
@@ -138,8 +138,8 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener, M
 	 */
 	public void mouseMoved(MouseEvent arg0) {
 		game.screen.mouseMoved(arg0);
-		mousex = arg0.getX();
-		mousey = arg0.getY();
+		mousex = (int)(arg0.getX()/Game.SCALE);
+		mousey = (int)(arg0.getY()/Game.SCALE);
 		
 	}
 

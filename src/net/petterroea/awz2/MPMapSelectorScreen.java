@@ -55,7 +55,7 @@ public class MPMapSelectorScreen extends Screen {
 	public void mouseReleased(MouseEvent arg0) {
 		if(arg0.getY() > 150)
 		{
-			Rectangle mouse = new Rectangle(arg0.getX(), arg0.getY(), 1, 1);
+			Rectangle mouse = new Rectangle(Input.mousex, Input.mousey, 1, 1);
 			for(int i = 0; i < MediaManager.maps.size(); i++)
 			{
 				Rectangle current = new Rectangle(0, 150 + yoffset + (i * MediaManager.font.getCharHeight() + (i*15)), game.WIDTH, MediaManager.font.getCharHeight());

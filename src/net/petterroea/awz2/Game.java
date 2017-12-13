@@ -41,6 +41,9 @@ public class Game extends Applet implements Runnable{
 	 * Height of applet
 	 */
 	static int HEIGHT = 600;
+	
+	static float SCALE = 2.0f;
+	
 	Input input;
 	/**
 	 * The backBuffer used to avoid flickering
@@ -60,8 +63,8 @@ public class Game extends Applet implements Runnable{
 	 */
 	public void reloadSize()
 	{
-		WIDTH = this.getWidth();
-		HEIGHT = this.getHeight();
+		WIDTH = (int)(this.getWidth()/SCALE);
+		HEIGHT = (int)(this.getHeight()/SCALE);
 	}
 	/**
 	 * Start method
@@ -71,11 +74,11 @@ public class Game extends Applet implements Runnable{
 		// TODO Auto-generated method stub
 		JFrame frame = new JFrame("Game");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(WIDTH, HEIGHT);
+		frame.setSize((int)(WIDTH*SCALE), (int)(HEIGHT*SCALE));
 		Game game = new Game();
 		frame.add(game);
 		frame.setVisible(true);
-			frame.setSize(WIDTH + (WIDTH - game.getWidth()) - 10, HEIGHT + (HEIGHT - game.getHeight()) - 10);
+			frame.setSize((int)(WIDTH*SCALE) + ((int)(WIDTH*SCALE) - game.getWidth()) - 10, (int)(HEIGHT*SCALE) + ((int)(HEIGHT*SCALE) - game.getHeight()) - 10);
 			frame.setResizable(false);
 		game.init();
 		game.start();
@@ -86,7 +89,7 @@ public class Game extends Applet implements Runnable{
 	public void init()
 	{
 		MediaManager.load();
-		reloadSize(); //Få tak i størrelsen så vi kan regne noen ting som trenger det
+		reloadSize(); //Fï¿½ tak i stï¿½rrelsen sï¿½ vi kan regne noen ting som trenger det
 		//Initkode her
 		options = new Options();
 		screen = new MainMenuScreen(this);
@@ -141,17 +144,19 @@ public class Game extends Applet implements Runnable{
 				lastFpsUpdate = System.currentTimeMillis();
 			}
 			frames++;
-			if(backBuffer == null || backBuffer.getWidth(null) != this.getWidth() || backBuffer.getHeight(null) != this.getHeight())
+			if(backBuffer == null || backBuffer.getWidth(null) != (int)(this.getWidth()/SCALE) || backBuffer.getHeight(null) != (int)(this.getHeight()/SCALE))
 			{
-				backBuffer = this.createImage(this.getWidth(), this.getHeight());
+				System.out.println("Creating new backbuffer");
+				backBuffer = this.createImage((int)(this.getWidth()/SCALE), (int)(this.getHeight()/SCALE));
 			}
 			Graphics g = backBuffer.getGraphics();
 			g.setColor(Color.white);
-			g.fillRect(0, 0, WIDTH, HEIGHT);
+			g.fillRect(0, 0, (int)(WIDTH/SCALE), (int)(HEIGHT/SCALE));
 			g.setColor(Color.black);
 			screen.tick(delta, g);
 			MediaManager.font.draw(g, 0, 0, fps + "", null);
-			this.getGraphics().drawImage(backBuffer, 0, 0, null);
+			//this.getGraphics().drawImage(backBuffer, 0, 0, null);
+			this.getGraphics().drawImage(backBuffer, 0, 0, this.getWidth(), this.getHeight(), 0, 0, backBuffer.getWidth(null), backBuffer.getHeight(null), null);
 		}
 	}
 }

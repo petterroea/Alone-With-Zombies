@@ -283,6 +283,7 @@ public class EntityZombie extends Entity {
 		}
 		else
 		{
+			health = health - damage;
 			if(health <= 0)
 			{
 				if(!removeMe)
