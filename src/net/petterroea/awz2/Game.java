@@ -78,8 +78,8 @@ public class Game extends Applet implements Runnable{
 		Game game = new Game();
 		frame.add(game);
 		frame.setVisible(true);
-			frame.setSize((int)(WIDTH*SCALE) + ((int)(WIDTH*SCALE) - game.getWidth()) - 10, (int)(HEIGHT*SCALE) + ((int)(HEIGHT*SCALE) - game.getHeight()) - 10);
-			frame.setResizable(false);
+			frame.setSize((int)(WIDTH/SCALE) + ((int)(WIDTH/SCALE) - game.getWidth()) - 10, (int)(HEIGHT/SCALE) + ((int)(HEIGHT/SCALE) - game.getHeight()) - 10);
+			//      frame.setResizable(false);
 		game.init();
 		game.start();
 	}

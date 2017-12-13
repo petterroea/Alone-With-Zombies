@@ -178,7 +178,7 @@ public class Map {
 			lastZombieSpawn = System.currentTimeMillis();
 			Random rand = new Random();
 			int index = rand.nextInt(spawners.size());
-			addEntity(new EntityZombie(getZombieID(), spawners.get(index).x, spawners.get(index).y, 1 + (allZombies/5)));
+			addEntity(new EntityZombie(getZombieID(), spawners.get(index).x, spawners.get(index).y, 1 + (allZombies/3)));
 			zombies++;
 			allZombies++;
 			//System.out.println("Spawned a zombie");
